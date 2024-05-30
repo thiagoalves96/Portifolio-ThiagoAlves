@@ -1,0 +1,107 @@
+:root {
+    --bg-color: #080808; /* Cor de fundo */
+    --second-bg-color: #131313; /* Segunda cor de fundo */
+    --text-color: white; /* Cor do texto */
+    --main-color: #00ffee; /* Cor principal */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--main-color);
+}
+
+.form input[type="text"],
+.form input[type="email"],
+.form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
+    background-color: var(--second-bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.form textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.form input[type="text"]:focus,
+.form input[type="email"]:focus,
+.form textarea:focus {
+    border-color: var(--main-color);
+    box-shadow: 0 0 0 2px var(--main-color);
+}
+
+.form button[type="submit"] {
+    background-color: var(--main-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.form button[type="submit"]:hover {
+    background-color: darken(var(--main-color), 10%);
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .form {
+        flex-direction: column; /* Muda para layout em linha para telas menores */
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form input[type="text"],
+    .form input[type="email"],
+    .form textarea {
+        width: calc(50% - 20px);
+        margin-right: 10px;
+    }
+
+    .form textarea {
+        height: 150px;
+        resize: vertical;
+    }
+}
+@media (max-width: 384px) {
+    .h1 {
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <mpta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Formulário de Contato</title>
+        <link rel="stylesheet" href="/css/form.css" />
+    </head>
+    <body>
+        <h1 class="h1">Formulário de Contato</h1>
+        <form
+            action="https://formsubmit.co/thiagodev22@hotmail.com"
+            method="POST"
+            class="form"
+        >
+            <label for="name">Nome</label>
+            <input
+                type="text"
+                name="name"
+                id="name"
+                required
+                placeholder="Digite o seu nome"
+            />
+            <label for="email"> E-mail</label>
+            <input
+                type="email"
+                name="email"
+                id="email"
+                required
+                placeholder="Digite o seu e-mail"
+            />
+            <label for="message">Mensagem</label>
+            <textarea
+                name="message"
+                id="message"
+                required
+                placeholder="Digite a sua mensagem"
+            ></textarea>
+            <input type="hidden" name="_captcha" value="false" />
+            <input
+                type="hidden"
+                name="_next"
+                value="https://thiagoalvesdev.com.br/page/thanks.html"
+            />
+            <button type="submit">Enviar</button>
+        </form>
+    </body>
+</html>
