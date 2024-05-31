@@ -164,7 +164,7 @@ span {
 }
 
 .icon-border::before {
-    content: "Minhas Techs";
+    content: "Minha Stack";
     position: absolute;
     top: -15px; /* Move o texto mais para cima para parecer que está fora da borda */
     left: 50%; /* Centraliza o texto horizontalmente */
