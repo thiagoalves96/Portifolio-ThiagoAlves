@@ -491,6 +491,7 @@ span {
 }
 
 .service-info h4 {
+    text-align: center;
     font-size: 3rem;
     font-weight: 800;
     line-height: 2;
@@ -502,6 +503,7 @@ span {
     max-height: 100px;
     line-height: 1.7;
     margin: auto;
+    text-align: justify;
 }
 #link {
     color: inherit; /* Mantém a cor do texto igual ao do restante do documento */
