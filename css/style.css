@@ -30,19 +30,19 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 4rem 12% 4rem;
-    background: rgba(0, 0, 0, 0.3);
+    padding: 2rem 12% 2rem;
+    background: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; 
     z-index: 5;
+    box-shadow: 0 2px 8px 0 var(--main-color);
 }
 
-.logo {
-    font-size: 3rem;
-    color: var(--text-color);
-    font-weight: 800;
+.logo img {
+    height: 70px; /* Define a altura desejada */
+    display: block; /* Garante que a imagem não herde comportamentos de inline que podem adicionar espaço */
     cursor: pointer;
     transition: 0.3s ease;
     transform: scaleX(1);
@@ -52,9 +52,6 @@ body {
     transform: scaleX(-1);
 }
 
-.logo span {
-    text-shadow: 0 0 25px var(--main-color);
-}
 
 .navbar a {
     font-size: 1.8rem;
@@ -430,7 +427,6 @@ span {
     font-weight: 300;
     line-height: 22px;
 }
-
 ::-webkit-scrollbar {
     width: 15px;
 }
