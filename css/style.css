@@ -542,7 +542,18 @@ span {
 .contact form .btn {
     margin-top: 2rem;
 } */
-
+.containeForms {
+    border: 2px solid var(--main-color); /* Exemplo: uma borda sólida de 2px de largura e preta */
+    padding: 20px; /* Adiciona algum espaço interno para separar a borda do conteúdo */
+    margin: 20px auto; /* Centraliza horizontalmente e adiciona margem ao redor */
+    max-width: 600px; /* Limita a largura máxima do contêiner */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave ao redor do contêiner */
+}
+.containeForms h2 {
+    color: var(--main-color);
+    text-align: center;
+    font-size: 40px;
+}
 .contact-info {
     text-align: center;
     padding: 10rem 0;

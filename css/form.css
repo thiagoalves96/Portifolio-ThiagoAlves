@@ -4,13 +4,6 @@
     --text-color: white; /* Cor do texto */
     --main-color: #00ffee; /* Cor principal */
 }
-.containeForms {
-    border: 2px solid var(--main-color); /* Exemplo: uma borda sólida de 2px de largura e preta */
-    padding: 20px; /* Adiciona algum espaço interno para separar a borda do conteúdo */
-    margin: 20px auto; /* Centraliza horizontalmente e adiciona margem ao redor */
-    max-width: 600px; /* Limita a largura máxima do contêiner */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave ao redor do contêiner */
-}
 .form {
     display: flex;
     flex-direction: column;
@@ -75,9 +68,10 @@
     transform: scale(1.05);
 }
 
+/* Ajuste na media query existente para melhorar a responsividade do formulário */
 @media (max-width: 768px) {
     .form {
-        flex-direction: column; /* Muda para layout em linha para telas menores */
+        flex-direction: column;
         align-items: center;
         justify-content: center;
     }
@@ -85,17 +79,34 @@
     .form input[type="text"],
     .form input[type="email"],
     .form textarea {
-        width: calc(50% - 20px);
-        margin-right: 10px;
+        width: 100%; /* Faz com que os campos ocupem toda a largura disponível */
+        margin: 10px 0; /* Ajusta a margem para cima e para baixo, removendo a margem à direita */
     }
 
     .form textarea {
         height: 150px;
         resize: vertical;
     }
+
+    .containeForms {
+        max-width: 90%;
+        margin: 10px auto;
+        padding: 10px;
+    }
+
+    .containeForms h2 {
+        font-size: 30px;
+    }
 }
+
+/* Adiciona uma nova media query para telas extra pequenas */
 @media (max-width: 384px) {
-    .h1 {
-        font-size: 1.5rem;
+    .containeForms h2 {
+        font-size: 1.5rem; /* Ajusta o tamanho da fonte do h2 para telas menores */
+    }
+
+    .form button {
+        width: 100%; /* Faz com que o botão ocupe toda a largura disponível */
+        padding: 10px; /* Aumenta o padding para melhorar a usabilidade em telas touch */
     }
 }
