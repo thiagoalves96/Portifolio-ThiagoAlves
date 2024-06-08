@@ -35,7 +35,7 @@ body {
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
-    align-items: center; 
+    align-items: center;
     z-index: 5;
     box-shadow: 0 2px 8px 0 var(--main-color);
 }
@@ -51,7 +51,6 @@ body {
 .logo:hover {
     transform: scaleX(-1);
 }
-
 
 .navbar a {
     font-size: 1.8rem;
@@ -724,6 +723,12 @@ span {
     }
     .services-container {
         grid-template-columns: repeat(1, 1fr);
+    }
+}
+@media (max-width: 798px) {
+    .logo img {
+        flex-direction: column-reverse;
+        height: 50px;
     }
 }
 @media (max-width: 768px) {
