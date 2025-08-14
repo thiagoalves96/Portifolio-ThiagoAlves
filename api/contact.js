@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', 'https://thiagoalvesdev.com.br');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -30,12 +30,12 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Configure nodemailer (usando Gmail SMTP como exemplo)
+    // Configure nodemailer
     const transporter = nodemailer.createTransporter({
       service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USER, // Adicionar nas variáveis de ambiente
-        pass: process.env.EMAIL_PASS  // Adicionar nas variáveis de ambiente
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
       }
     });
 
@@ -91,4 +91,4 @@ export default async function handler(req, res) {
       message: 'Erro interno do servidor. Tente novamente mais tarde.'
     });
   }
-}
+};
