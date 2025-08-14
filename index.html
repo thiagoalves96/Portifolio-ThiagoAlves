@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Thiago Alves</title>
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/css/form.css" />
+    <link rel="stylesheet" href="css/form.css" />
     <link rel="icon" href="img/inco.png" type="image/png" />
     <link rel="shortcut icon" href="img/inco.png" type="image/png" />
 
@@ -60,25 +60,39 @@
     
     <header class="header">
       <a href="#home" class="logo">
-        <img src="/img/logo-2.png" alt="Logo" />
+        <img src="img/logo-2.png" alt="Logo" />
       </a>
 
       <i class="bx bx-menu" id="menu-icon"></i>
 
       <nav class="navbar">
-        <a href="#home" class="active">Perfil</a>
-        <a href="#education">Escolaridade</a>
-        <a href="#services">Projetos</a>
-        <a href="#contact">Contato</a>
+        <a href="#home" class="active" data-translate="nav.profile">Perfil</a>
+        <a href="#education" data-translate="nav.education">Escolaridade</a>
+        <a href="#services" data-translate="nav.projects">Projetos</a>
+        <a href="#contact" data-translate="nav.contact">Contato</a>
       </nav>
+      
+      <!-- Botão de tradução integrado ao header -->
+      <div class="language-toggle-header">
+        <button class="lang-btn active" onclick="translator.switchLang('pt')" title="Português">
+          🇧🇷 PT
+        </button>
+        <button class="lang-btn" onclick="translator.switchLang('en')" title="English">
+          🇺🇸 EN
+        </button>
+      </div>
     </header>
+    
     <section class="home" id="home">
       <div class="home-content">
-        <h1>Eu, <span>Thiago</span></h1>
+        <h1 data-translate="home.greeting">Eu, <span>Thiago</span></h1>
 
-        <h3 class="text-animation">sou <span style="margin-left: 10px"> </span></h3>
+        <h3 class="text-animation">
+          <span data-translate="home.iam">sou</span>
+          <span class="animated-text"></span>
+        </h3>
 
-        <p>
+        <p data-translate="home.description">
           Profissional com sólida experiência em sistemas ERP incluindo <span>Tasy</span>, <span>MV</span>,
           <span>PEP</span> e <span>Fast Medic</span>. Graduado em
           <span>Análise e Desenvolvimento de Sistemas</span> pela UniPaulistana, com habilidades em programação
@@ -87,6 +101,7 @@
           <span>trabalho em equipes ágeis</span>. Proativo, com habilidades analíticas e raciocírio lógico, buscando
           contribuir significativamente para metas da empresa em desenvolvimento de sistemas.
         </p>
+        
         <div class="social-icons">
           <a href="https://www.linkedin.com/in/thiagodev-alves/" target="_blank"><i class="bx bxl-linkedin"></i></a>
           <a href="https://github.com/thiagoalves96" target="_blank"> <i class="bx bxl-github"></i></a>
@@ -95,93 +110,78 @@
         </div>
 
         <div class="btn-group">
-          <a href="/Downloads/thiago-alves-linkedin.pdf" download="CurriculoThiago.pdf" class="btn">Curriculo PDF</a>
-          <a href="#contact" class="btn">Contato</a>
+          <a href="Downloads/thiago-alves-linkedin.pdf" download="CurriculoThiago.pdf" class="btn" data-translate="home.cv">Curriculo PDF</a>
+          <a href="#contact" class="btn" data-translate="home.contact">Contato</a>
         </div>
+        
         <div class="tech-icons">
           <div class="icon-border">
-            <a href="#" class="icon"
-              ><img
-                src="https://img.icons8.com/?size=100&id=13679&format=png&color=000000"
-                alt="Tecnologia 1"
-                style="width: 30px; height: 30px; object-fit: cover"
-            /></a>
-            <a href="#" class="icon"
-              ><img
-                src="https://img.icons8.com/?size=100&id=20909&format=png&color=000000"
-                alt="Tecnologia 2"
-                style="width: 30px; height: 30px; object-fit: cover"
-            /></a>
-            <a href="#" class="icon"
-              ><img
-                src="https://img.icons8.com/?size=100&id=qGUfLiYi1bRN&format=png&color=000000"
-                alt="Tecnologia 3"
-                style="width: 30px; height: 30px; object-fit: cover"
-            /></a>
-            <a href="#" class="icon"
-              ><img
-                src="https://img.icons8.com/?size=100&id=mHi46t5vguiz&format=png&color=000000"
-                alt="Tecnologia 4"
-                style="width: 30px; height: 30px; object-fit: cover"
-            /></a>
-            <a href="#" class="icon"
-              ><img
-                src="https://img.icons8.com/?size=100&id=3BTBsJs5myRy&format=png&color=000000"
-                alt="Tecnologia 5"
-                style="width: 30px; height: 30px; object-fit: cover"
-            /></a>
-            <a href="#" class="icon"
-              ><img
-                src="https://img.icons8.com/?size=100&id=52539&format=png&color=000000"
-                alt="Tecnologia 6"
-                style="width: 30px; height: 30px; object-fit: cover"
-            /></a>
+            <a href="#" class="icon">
+              <img src="https://img.icons8.com/?size=100&id=13679&format=png&color=000000" alt="Java" style="width: 30px; height: 30px; object-fit: cover" />
+            </a>
+            <a href="#" class="icon">
+              <img src="https://img.icons8.com/?size=100&id=20909&format=png&color=000000" alt="HTML" style="width: 30px; height: 30px; object-fit: cover" />
+            </a>
+            <a href="#" class="icon">
+              <img src="https://img.icons8.com/?size=100&id=qGUfLiYi1bRN&format=png&color=000000" alt="CSS" style="width: 30px; height: 30px; object-fit: cover" />
+            </a>
+            <a href="#" class="icon">
+              <img src="https://img.icons8.com/?size=100&id=mHi46t5vguiz&format=png&color=000000" alt="JavaScript" style="width: 30px; height: 30px; object-fit: cover" />
+            </a>
+            <a href="#" class="icon">
+              <img src="https://img.icons8.com/?size=100&id=3BTBsJs5myRy&format=png&color=000000" alt="MySQL" style="width: 30px; height: 30px; object-fit: cover" />
+            </a>
+            <a href="#" class="icon">
+              <img src="https://img.icons8.com/?size=100&id=52539&format=png&color=000000" alt="Git" style="width: 30px; height: 30px; object-fit: cover" />
+            </a>
           </div>
         </div>
       </div>
+      
       <div class="home-img">
-        <img src="./img/Simple Profile Photo Instagram Post-5.png" alt="" />
+        <img src="./img/Simple Profile Photo Instagram Post-5.png" alt="Thiago Alves" />
       </div>
     </section>
+    
     <section class="education" id="education">
-      <h2 class="heading">Escolaridade</h2>
+      <h2 class="heading" data-translate="education.title">Escolaridade</h2>
 
       <div class="timeline-items">
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-date">2014</div>
           <div class="timeline-content">
-            <h3>Ensino Médio Completo</h3>
-            <p>Escola: EETAL</p>
+            <h3 data-translate="education.highschool.title">Ensino Médio Completo</h3>
+            <p data-translate="education.highschool.school">Escola: EETAL</p>
           </div>
         </div>
+        
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-date">2018</div>
           <div class="timeline-content">
-            <h3>Curso Técnico de Enfermagem</h3>
-            <p>
+            <h3 data-translate="education.nursing.title">Curso Técnico de Enfermagem</h3>
+            <p data-translate="education.nursing.description">
               Curso técnico de enfermagem <br />
               Duração 2 anos, INTESP - SP
             </p>
           </div>
         </div>
+        
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-date">2023</div>
           <div class="timeline-content">
-            <h3>Cursos Extracurriculares</h3>
-            <p>
-              <strong>Algoritmos e Lógica de Programação - Udemy</strong>
-              <br />
+            <h3 data-translate="education.courses.title">Cursos Extracurriculares</h3>
+            <p data-translate="education.courses.algorithms">
+              <strong>Algoritmos e Lógica de Programação - Udemy</strong><br />
               <strong>Duração:</strong> 30 horas <br />
               <strong>O que absorvi:</strong> Compreensão de como formular algoritmos para resolver problemas e a
               habilidade de implementar esses algoritmos usando lógica de programação. Aprendi a criar fluxogramas e
               pseudocódigo para planejar soluções antes de codificá-las.
             </p>
-            <p>
-              <strong>Entendendo Métodos Java - Digital Innovation One</strong>
-              <br />
+            <p data-translate="education.courses.java.methods">
+              <strong>Entendendo Métodos Java - Digital Innovation One</strong><br />
               <strong>Duração:</strong> 2 horas <br /><strong>O que absorvi:</strong>
               Aprendi a definir e utilizar métodos em Java, entendendo a importância de métodos para modularidade e
               reutilização de código. Compreendi como passar parâmetros e retornar valores de métodos.
@@ -193,42 +193,16 @@
           <div class="timeline-dot"></div>
           <div class="timeline-date">2023</div>
           <div class="timeline-content">
-            <h3>Cursos Extracurriculares</h3>
-            <p>
-              <strong>Manutenção de Microcomputadores - Projeto Menino Jesus</strong>
-              <br />
-              <strong>Duração:</strong> 112 horas <br />
-              <strong>O que absorvi:</strong> Ganhei habilidades práticas em diagnosticar e reparar problemas de
-              hardware, além de instalar e configurar sistemas operacionais e softwares. Desenvolvi a capacidade de
-              identificar componentes e entender seu funcionamento.
-            </p>
-            <p>
-              <strong>Trabalhando em Equipes Ágeis - Digital Innovation One</strong>
-              <br />
-              <strong>Duração:</strong> 3 horas <br /><strong>O que absorvi:</strong>
-              Entendi os princípios das metodologias ágeis e como elas podem melhorar a colaboração e eficiência em
-              projetos. Aprendi sobre os papéis e responsabilidades em Scrum e Kanban, e como aplicar essas práticas no
-              desenvolvimento de software.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">2023</div>
-          <div class="timeline-content">
-            <h3>Cursos Extracurriculares</h3>
-            <p>
-              <strong>Lógica Condicional e Controle de Fluxos em Java - Digital Innovation One</strong>
-              <br />
+            <h3 data-translate="education.courses.title">Cursos Extracurriculares</h3>
+            <p data-translate="education.courses.java.logic">
+              <strong>Lógica Condicional e Controle de Fluxos em Java - Digital Innovation One</strong><br />
               <strong>Duração:</strong> 5 horas <br />
               <strong>O que absorvi:</strong> Dominei o uso de estruturas de controle de fluxo em Java, como if, else,
               switch, e loops. Isso me permitiu controlar o comportamento do meu código com base em diferentes condições
               e repetição de tarefas.
             </p>
-            <p>
-              <strong>Versionamento de Código com Git e GitHub - Digital Innovation One</strong>
-              <br />
+            <p data-translate="education.courses.git">
+              <strong>Versionamento de Código com Git e GitHub - Digital Innovation One</strong><br />
               <strong>Duração:</strong> 2 horas <br />
               <strong>O que absorvi:</strong> Aprendi a usar o Git para versionamento de código, incluindo comandos
               básicos como commit, push, pull, e branch. Entendi como colaborar com outros desenvolvedores usando o
@@ -241,18 +215,16 @@
           <div class="timeline-dot"></div>
           <div class="timeline-date">2023</div>
           <div class="timeline-content">
-            <h3>Cursos Extracurriculares</h3>
-            <p>
-              <strong>Programação Orientada a Objetos com Java - Digital Innovation One</strong>
-              <br />
+            <h3 data-translate="education.courses.title">Cursos Extracurriculares</h3>
+            <p data-translate="education.courses.java.oop">
+              <strong>Programação Orientada a Objetos com Java - Digital Innovation One</strong><br />
               <strong>Duração:</strong> 4 horas <br />
               <strong>O que absorvi:</strong> Compreendi os conceitos fundamentais da programação orientada a objetos,
               como classes, objetos, herança, polimorfismo e encapsulamento. Aprendi a aplicar esses conceitos para
               criar códigos mais organizados e reutilizáveis.
             </p>
-            <p>
-              <strong>Aprendendo a Sintaxe Java - Digital Innovation One</strong>
-              <br />
+            <p data-translate="education.courses.java.syntax">
+              <strong>Aprendendo a Sintaxe Java - Digital Innovation One</strong><br />
               <strong>Duração:</strong> 5 horas <br />
               <strong>O que absorvi:</strong> Desenvolvi uma sólida compreensão da sintaxe básica do Java, incluindo
               declaração de variáveis, uso de operadores, e construção de estruturas de controle. Isso me preparou para
@@ -265,29 +237,27 @@
           <div class="timeline-dot"></div>
           <div class="timeline-date">2024</div>
           <div class="timeline-content">
-            <h3>Instituição: Unipaulistana</h3>
-            <p>
+            <h3 data-translate="education.graduation.institution">Instituição: Unipaulistana</h3>
+            <p data-translate="education.graduation.description">
               <strong>Graduação:</strong> Análise e Desenvolvimento de Sistemas<br />
-              <strong>Duração:</strong> concluido
-              <br />
+              <strong>Duração:</strong> concluido<br />
               <strong>O que absorvi:</strong> Durante minha jornada na Unipaulistana, absorvi conhecimentos essenciais
               em análise e desenvolvimento de sistemas utilizando principalmente a linguagem Java. Aprendi a projetar e
               desenvolver soluções de software, dominando programação, banco de dados, gestão de projetos e engenharia
               de software. Além disso, desenvolvi habilidades em trabalho em equipe, resolução de problemas complexos e
               comunicação eficaz, essenciais para minha carreira na área de tecnologia da informação.
-              <br />
             </p>
           </div>
         </div>
+        
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-date">2024</div>
           <div class="timeline-content">
-            <h3>Instituição: Universidade Tecnológica Federal do Paraná - UTFPR</h3>
-            <p>
+            <h3 data-translate="education.postgrad.institution">Instituição: Universidade Tecnológica Federal do Paraná - UTFPR</h3>
+            <p data-translate="education.postgrad.description">
               <strong>Pós-graduação:</strong> Pós-graduação Lato Sensu em Tecnologia Java<br />
-              <strong>Duração:</strong> andamento
-              <br />
+              <strong>Duração:</strong> andamento<br />
               <em>Pós-graduação Lato Sensu em Tecnologia Java</em> proporciona um aprofundamento nas tecnologias
               avançadas do ecossistema Java, focando especialmente no desenvolvimento de aplicações robustas e
               escaláveis. Durante o curso, estou aprendendo conceitos avançados de Java EE, frameworks como Spring Boot
@@ -295,7 +265,6 @@
               também estudos em arquiteturas de microserviços, segurança da informação em aplicações Java e estratégias
               para otimização de performance. O objetivo é capacitar profissionais para liderar projetos complexos e
               inovadores no mercado de desenvolvimento de software.
-              <br />
             </p>
           </div>
         </div>
@@ -303,170 +272,169 @@
     </section>
 
     <section class="services" id="services">
-      <h2 class="heading">Projetos</h2>
-      <h3 class="">Todos os <span>tópicos</span> levarão para o <span>GitHub</span></h3>
+      <h2 class="heading" data-translate="projects.title">Projetos</h2>
+      <h3 class="" data-translate="projects.subtitle">Todos os <span>tópicos</span> levarão para o <span>GitHub</span></h3>
 
       <div class="projects-grid">
         <div class="project-card" data-project="1">
           <div class="project-preview">
             <div class="project-icon">☕</div>
-            <h4>CRUD Java Servlet</h4>
-            <p class="project-summary">Sistema de gerenciamento com Java Servlet e MySQL</p>
+            <h4 data-translate="projects.crud.servlet.title">CRUD Java Servlet</h4>
+            <p class="project-summary" data-translate="projects.crud.servlet.summary">Sistema de gerenciamento com Java Servlet e MySQL</p>
           </div>
           <div class="project-details">
-            <h4>CRUD: Java Servlet</h4>
-            <p>Este projeto é um sistema de gerenciamento de funcionários em Java com Servlet, conectando-se a um banco de dados MySQL. Ele oferece operações básicas de CRUD (Create, Read, Update, Delete) e é licenciado sob a MIT License.</p>
-            <a href="https://github.com/thiagoalves96/Regra_de_Negocio" class="project-link" target="_blank">Ver no GitHub</a>
+            <h4 data-translate="projects.crud.servlet.title">CRUD: Java Servlet</h4>
+            <p data-translate="projects.crud.servlet.description">Este projeto é um sistema de gerenciamento de funcionários em Java com Servlet, conectando-se a um banco de dados MySQL. Ele oferece operações básicas de CRUD (Create, Read, Update, Delete) e é licenciado sob a MIT License.</p>
+            <a href="https://github.com/thiagoalves96/Regra_de_Negocio" class="project-link" target="_blank" data-translate="projects.github.link">Ver no GitHub</a>
           </div>
         </div>
     
         <div class="project-card" data-project="2">
           <div class="project-preview">
             <div class="project-icon">🖥️</div>
-            <h4>CRUD Java Swing</h4>
-            <p class="project-summary">Sistema de autenticação com interface gráfica</p>
+            <h4 data-translate="projects.crud.swing.title">CRUD Java Swing</h4>
+            <p class="project-summary" data-translate="projects.crud.swing.summary">Sistema de autenticação com interface gráfica</p>
           </div>
           <div class="project-details">
-            <h4>CRUD em Java Swing</h4>
-            <p>O projeto cria um sistema de autenticação avançado em Java Swing com banco de dados, oferecendo login, verificação de credenciais, tela principal, registro de usuário e recuperação de senha. Utiliza Java para a lógica, Swing para a interface e bancos de dados como MySQL ou PostgreSQL.</p>
-            <a href="https://github.com/thiagoalves96/JavaSwing" class="project-link" target="_blank">Ver no GitHub</a>
+            <h4 data-translate="projects.crud.swing.title">CRUD em Java Swing</h4>
+            <p data-translate="projects.crud.swing.description">O projeto cria um sistema de autenticação avançado em Java Swing com banco de dados, oferecendo login, verificação de credenciais, tela principal, registro de usuário e recuperação de senha. Utiliza Java para a lógica, Swing para a interface e bancos de dados como MySQL ou PostgreSQL.</p>
+            <a href="https://github.com/thiagoalves96/JavaSwing" class="project-link" target="_blank" data-translate="projects.github.link">Ver no GitHub</a>
           </div>
         </div>
     
         <div class="project-card" data-project="3">
           <div class="project-preview">
             <div class="project-icon">🎲</div>
-            <h4>Jogo da Sorte</h4>
-            <p class="project-summary">Jogo de adivinhação desenvolvido em Java</p>
+            <h4 data-translate="projects.game.title">Jogo da Sorte</h4>
+            <p class="project-summary" data-translate="projects.game.summary">Jogo de adivinhação desenvolvido em Java</p>
           </div>
           <div class="project-details">
-            <h4>Lógica de Programação</h4>
-            <p>Este projeto concluído é o Jogo da Sorte, desenvolvido em Java. Os jogadores tentam adivinhar um número escolhido aleatoriamente pela máquina dentro de um intervalo definido, recebendo dicas para orientar suas suposições. Os jogadores têm três tentativas para acertar o número sorteado.</p>
-            <a href="https://github.com/thiagoalves96/Projetos" class="project-link" target="_blank">Ver no GitHub</a>
+            <h4 data-translate="projects.game.logic.title">Lógica de Programação</h4>
+            <p data-translate="projects.game.description">Este projeto concluído é o Jogo da Sorte, desenvolvido em Java. Os jogadores tentam adivinhar um número escolhido aleatoriamente pela máquina dentro de um intervalo definido, recebendo dicas para orientar suas suposições. Os jogadores têm três tentativas para acertar o número sorteado.</p>
+            <a href="https://github.com/thiagoalves96/Projetos" class="project-link" target="_blank" data-translate="projects.github.link">Ver no GitHub</a>
           </div>
         </div>
     
         <div class="project-card" data-project="4">
           <div class="project-preview">
             <div class="project-icon">🧪</div>
-            <h4>Exercícios QA</h4>
-            <p class="project-summary">Exercícios de lógica e Quality Assurance</p>
+            <h4 data-translate="projects.qa.title">Exercícios QA</h4>
+            <p class="project-summary" data-translate="projects.qa.summary">Exercícios de lógica e Quality Assurance</p>
           </div>
           <div class="project-details">
-            <h4>Exercícios de lógicas em Java</h4>
-            <p>Este é um projeto em desenvolvimento de exercícios resolvidos na disciplina de Quality Assurance, com orientação do Prof. Jailson Costa. Alguns exercícios já foram concluídos em sala de aula, como MANZAN e FACCAT.</p>
-            <a href="https://github.com/thiagoalves96/Java" class="project-link" target="_blank">Ver no GitHub</a>
+            <h4 data-translate="projects.qa.logic.title">Exercícios de lógicas em Java</h4>
+            <p data-translate="projects.qa.description">Este é um projeto em desenvolvimento de exercícios resolvidos na disciplina de Quality Assurance, com orientação do Prof. Jailson Costa. Alguns exercícios já foram concluídos em sala de aula, como MANZAN e FACCAT.</p>
+            <a href="https://github.com/thiagoalves96/Java" class="project-link" target="_blank" data-translate="projects.github.link">Ver no GitHub</a>
           </div>
         </div>
       </div>
     </section>
 
     <section class="contact" id="contact">
-      <h2 class="heading">Contatar<span>-me</span></h2>
+      <h2 class="heading" data-translate="contact.title">Contatar<span>-me</span></h2>
       <div class="contact-info">
-        <p>
+        <p data-translate="contact.description">
           Estou disponível para novas oportunidades. Se você estiver interessado em me contratar, por favor, entre em
           contato comigo via WhatsApp ou E-mail.
         </p>
-        <a href="https://wa.me/5511992459507" target="_blank" id="secondBottom" class="btn"
-          >Entre em contato via WhatsApp</a
-        >
+        <a href="https://wa.me/5511992459507" target="_blank" id="secondBottom" class="btn" data-translate="contact.whatsapp">
+          Entre em contato via WhatsApp
+        </a>
       </div>
+      
       <div class="containeForms">
-        <h2>Formulário</h2>
+        <h2 data-translate="form.title">Formulário</h2>
         
         <!-- Indicador de Loading -->
         <div id="loading-indicator" class="loading-container" style="display: none;">
           <div class="loading-spinner"></div>
-          <p>Enviando mensagem...</p>
+          <p data-translate="form.sending">Enviando mensagem...</p>
         </div>
         
         <!-- Mensagem de Feedback -->
         <div id="feedback-message" class="feedback-message" style="display: none;"></div>
         
         <form id="contact-form" class="form">
-          <label for="name">Nome</label>
-          <input type="text" name="name" id="name" required placeholder="Digite o seu nome" />
-          <label for="email"> E-mail</label>
-          <input type="email" name="email" id="email" required placeholder="Digite o seu e-mail" />
-          <label for="message">Mensagem</label>
-          <textarea name="message" id="message" required placeholder="Digite a sua mensagem"></textarea>
-          <button type="submit" id="submit-btn">Enviar</button>
+          <label for="name" data-translate="form.name">Nome</label>
+          <input type="text" name="name" id="name" required data-translate="placeholder.name" placeholder="Digite o seu nome" />
+          <label for="email" data-translate="form.email"> E-mail</label>
+          <input type="email" name="email" id="email" required data-translate="placeholder.email" placeholder="Digite o seu e-mail" />
+          <label for="message" data-translate="form.message">Mensagem</label>
+          <textarea name="message" id="message" required data-translate="placeholder.message" placeholder="Digite a sua mensagem"></textarea>
+          <button type="submit" id="submit-btn" data-translate="form.send">Enviar</button>
         </form>
       </div>
     </section>
   
-    
-      <!-- Rodapé 3D com tema do portfólio -->
-      <footer class="footer-3d">
-        <!-- Efeito de profundidade -->
-        <div class="footer-depth-layer"></div>
-        
-        <!-- Conteúdo principal -->
-        <div class="footer-main-3d">
-          <div class="footer-content-3d">
-            <!-- Seção da marca com efeito 3D -->
-            <div class="footer-brand-3d">
-              <h2 class="brand-title-3d">THIAGO <span>ALVES</span></h2>
-              <p class="brand-subtitle-3d">Desenvolvedor Java Jr</p>
-              <p class="brand-description-3d">
-                Desenvolvedor apaixonado por tecnologia, especializado em Java e sempre em busca de novos desafios.
-              </p>
-              
-              <!-- Redes sociais com efeito 3D -->
-              <div class="social-links-3d">
-                <a href="https://www.linkedin.com/in/thiagodev-alves/" target="_blank" class="social-btn-3d" title="LinkedIn">
-                  <i class="bx bxl-linkedin"></i>
-                  <span class="social-glow"></span>
-                </a>
-                <a href="https://github.com/thiagoalves96" target="_blank" class="social-btn-3d" title="GitHub">
-                  <i class="bx bxl-github"></i>
-                  <span class="social-glow"></span>
-                </a>
-                <a href="https://wa.me/5511992459507" target="_blank" class="social-btn-3d" title="WhatsApp">
-                  <i class="bx bxl-whatsapp"></i>
-                  <span class="social-glow"></span>
-                </a>
-                <a href="mailto:thiagodev22@hotmail.com" class="social-btn-3d" title="Email">
-                  <i class="bx bx-envelope"></i>
-                  <span class="social-glow"></span>
-                </a>
-              </div>
+    <!-- Rodapé 3D com tema do portfólio -->
+    <footer class="footer-3d">
+      <!-- Efeito de profundidade -->
+      <div class="footer-depth-layer"></div>
+      
+      <!-- Conteúdo principal -->
+      <div class="footer-main-3d">
+        <div class="footer-content-3d">
+          <!-- Seção da marca com efeito 3D -->
+          <div class="footer-brand-3d">
+            <h2 class="brand-title-3d">THIAGO <span>ALVES</span></h2>
+            <p class="brand-subtitle-3d" data-translate="footer.subtitle">Desenvolvedor Java Jr</p>
+            <p class="brand-description-3d" data-translate="footer.description">
+              Desenvolvedor apaixonado por tecnologia, especializado em Java e sempre em busca de novos desafios.
+            </p>
+            
+            <!-- Redes sociais com efeito 3D -->
+            <div class="social-links-3d">
+              <a href="https://www.linkedin.com/in/thiagodev-alves/" target="_blank" class="social-btn-3d" title="LinkedIn">
+                <i class="bx bxl-linkedin"></i>
+                <span class="social-glow"></span>
+              </a>
+              <a href="https://github.com/thiagoalves96" target="_blank" class="social-btn-3d" title="GitHub">
+                <i class="bx bxl-github"></i>
+                <span class="social-glow"></span>
+              </a>
+              <a href="https://wa.me/5511992459507" target="_blank" class="social-btn-3d" title="WhatsApp">
+                <i class="bx bxl-whatsapp"></i>
+                <span class="social-glow"></span>
+              </a>
+              <a href="mailto:thiagodev22@hotmail.com" class="social-btn-3d" title="Email">
+                <i class="bx bx-envelope"></i>
+                <span class="social-glow"></span>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Links organizados com cards 3D -->
+          <div class="footer-links-3d">
+            <div class="footer-card-3d">
+              <h4 data-translate="footer.navigation">Navegação</h4>
+              <ul>
+                <li><a href="#home" data-translate="footer.nav.home">Início</a></li>
+                <li><a href="#education" data-translate="footer.nav.education">Educação</a></li>
+                <li><a href="#services" data-translate="footer.nav.projects">Projetos</a></li>
+                <li><a href="#contact" data-translate="footer.nav.contact">Contato</a></li>
+              </ul>
             </div>
             
-            <!-- Links organizados com cards 3D -->
-            <div class="footer-links-3d">
-              <div class="footer-card-3d">
-                <h4>Navegação</h4>
-                <ul>
-                  <li><a href="#home">Início</a></li>
-                  <li><a href="#education">Educação</a></li>
-                  <li><a href="#services">Projetos</a></li>
-                  <li><a href="#contact">Contato</a></li>
-                </ul>
-              </div>
-              
-              <div class="footer-card-3d">
-                <h4>Tecnologias</h4>
-                <ul>
-                  <li><span class="tech-badge-3d">Java</span></li>
-                  <li><span class="tech-badge-3d">Spring Boot</span></li>
-                  <li><span class="tech-badge-3d">MySQL</span></li>
-                  <li><span class="tech-badge-3d">Git/GitHub</span></li>
-                </ul>
-              </div>
+            <div class="footer-card-3d">
+              <h4 data-translate="footer.technologies">Tecnologias</h4>
+              <ul>
+                <li><span class="tech-badge-3d">Java</span></li>
+                <li><span class="tech-badge-3d">Spring Boot</span></li>
+                <li><span class="tech-badge-3d">MySQL</span></li>
+                <li><span class="tech-badge-3d">Git/GitHub</span></li>
+              </ul>
             </div>
           </div>
         </div>
-        
-        <!-- Rodapé inferior com efeito 3D -->
-        <div class="footer-bottom-3d">
-          <div class="footer-bottom-content-3d">
-            <p>&copy; 2024 Thiago Alves. Todos os direitos reservados.</p>
-            <div class="footer-badges-3d">
-              <span class="badge-3d">Desenvolvido com ❤️</span>
-              <span class="badge-3d">Java Developer</span>
-            </div>
+      </div>
+      
+      <!-- Rodapé inferior com efeito 3D -->
+      <div class="footer-bottom-3d">
+        <div class="footer-bottom-content-3d">
+          <p data-translate="footer.copyright">&copy; 2024 Thiago Alves. Todos os direitos reservados.</p>
+          <div class="footer-badges-3d">
+            <span class="badge-3d" data-translate="footer.badge.love">Desenvolvido com ❤️</span>
+            <span class="badge-3d" data-translate="footer.badge.developer">Java Developer</span>
           </div>
         </div>
       </div>
@@ -481,7 +449,8 @@
       </div>
     </footer>
     
-    <script src="./js/script.js"></script>
-    <script src="/js/contact-form.js"></script>
-    </body>
-    </html>
+    <script src="js/script.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/contact-form.js"></script>
+  </body>
+</html>

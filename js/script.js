@@ -24,7 +24,29 @@ window.onscroll = () => {
 menuIcon.onclick = () => {
     menuIcon.classList.toggle("bx-x");
     navbar.classList.toggle("active");
+    
+    // Adiciona classe ao header quando menu está ativo
+    const header = document.querySelector('.header');
+    if (navbar.classList.contains("active")) {
+        header.classList.add('menu-active');
+        document.body.style.overflow = "hidden";
+    } else {
+        header.classList.remove('menu-active');
+        document.body.style.overflow = "auto";
+    }
 };
+
+// Fecha o menu quando clicar em um link
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (navbar.classList.contains("active")) {
+            menuIcon.classList.remove("bx-x");
+            navbar.classList.remove("active");
+            document.querySelector('.header').classList.remove('menu-active');
+            document.body.style.overflow = "auto";
+        }
+    });
+});
 
 
 // Função para criar estrelas cadentes

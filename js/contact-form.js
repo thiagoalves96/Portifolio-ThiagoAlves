@@ -54,12 +54,23 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.classList.add('active');
     }
     
+    function showLoadingOverlay() {
+        const overlay = createOverlay();
+        const translator = window.translator;
+        overlay.innerHTML = `
+            <div class="simple-spinner"></div>
+            <div class="overlay-text">${translator ? translator.translate('form.sending') : 'Enviando mensagem...'}</div>
+        `;
+        overlay.classList.add('active');
+    }
+    
     function showOverlay(icon, message, type) {
         const overlay = createOverlay();
+        const translator = window.translator;
         overlay.innerHTML = `
             <div class="overlay-icon ${type}">${icon}</div>
             <div class="overlay-text">${message}</div>
-            <button class="close-btn" onclick="hideOverlay()">Fechar</button>
+            <button class="close-btn" onclick="hideOverlay()">${translator ? translator.translate('form.close') : 'Fechar'}</button>
         `;
         overlay.classList.add('active');
     }
