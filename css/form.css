@@ -1,43 +1,74 @@
 :root {
-    --bg-color: #080808; /* Cor de fundo */
-    --second-bg-color: #131313; /* Segunda cor de fundo */
-    --text-color: white; /* Cor do texto */
-    --main-color: #00ffee; /* Cor principal */
+    --bg-color: #080808;
+    --second-bg-color: #131313;
+    --text-color: white;
+    --main-color: #00ffee;
 }
+
+/* Formulário 3D Melhorado */
 .form {
     display: flex;
     flex-direction: column;
-    align-items: flex;
+    align-items: flex-start;
     justify-content: center;
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
-    padding: 20px;
-    background-color: var(--bg-color);
+    padding: 30px;
+    background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
     color: var(--text-color);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 
+        15px 15px 30px rgba(0, 0, 0, 0.7),
+        -15px -15px 30px rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(0, 255, 238, 0.2);
+    transition: all 0.3s ease;
+}
+
+.form:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        20px 20px 40px rgba(0, 0, 0, 0.8),
+        -20px -20px 40px rgba(255, 255, 255, 0.03);
 }
 
 .form label {
-    display: flex;
+    display: block;
     text-align: left;
-    margin-bottom: 5px;
-    font-size: 2rem;
+    margin-bottom: 8px;
+    font-size: 1.8rem;
     color: var(--main-color);
+    font-weight: 600;
 }
 
+/* Campos com efeito 3D */
 .form input[type="text"],
 .form input[type="email"],
 .form textarea {
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     margin-bottom: 20px;
-    border: 1px solid var(--text-color);
-    border-radius: 5px;
-    background-color: var(--second-bg-color);
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #0f0f0f, #252525);
     color: var(--text-color);
+    font-size: 1.1rem;
+    box-shadow: 
+        inset 5px 5px 10px rgba(0, 0, 0, 0.8),
+        inset -5px -5px 10px rgba(255, 255, 255, 0.02);
     transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form input[type="text"]:focus,
+.form input[type="email"]:focus,
+.form textarea:focus {
+    outline: none;
+    box-shadow: 
+        inset 5px 5px 10px rgba(0, 0, 0, 0.8),
+        inset -5px -5px 10px rgba(255, 255, 255, 0.02),
+        0 0 15px rgba(0, 255, 238, 0.3);
+    border: 2px solid var(--main-color);
 }
 
 .form textarea {
@@ -45,90 +76,77 @@
     resize: vertical;
 }
 
-.form input[type="text"]:focus,
-.form input[type="email"]:focus,
-.form textarea:focus {
-    border-color: var(--main-color);
-    box-shadow: 0 0 0 2px var(--main-color);
-}
-
+/* Botão 3D */
 .form button[type="submit"] {
-    background-color: var(--main-color);
+    background: linear-gradient(145deg, var(--main-color), #00d4c4);
     color: var(--second-bg-color);
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 15px 30px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 1.2em;
-    margin-top: 20px;
+    font-weight: 600;
+    margin-top: 10px;
+    box-shadow: 
+        5px 5px 15px rgba(0, 0, 0, 0.6),
+        -5px -5px 15px rgba(0, 255, 238, 0.1);
     transition: all 0.3s ease;
+    width: 100%;
 }
 
 .form button[type="submit"]:hover {
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    box-shadow: 
+        8px 8px 20px rgba(0, 0, 0, 0.7),
+        -8px -8px 20px rgba(0, 255, 238, 0.15);
 }
 
-/* Ajuste na media query existente para melhorar a responsividade do formulário */
-@media (max-width: 768px) {
-    .form {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .form input[type="text"],
-    .form input[type="email"],
-    .form textarea {
-        width: 100%; /* Faz com que os campos ocupem toda a largura disponível */
-        margin: 10px 0; /* Ajusta a margem para cima e para baixo, removendo a margem à direita */
-    }
-
-    .form textarea {
-        height: 150px;
-        resize: vertical;
-    }
-
-    .containeForms {
-        max-width: 90%;
-        margin: 10px auto;
-        padding: 10px;
-    }
-
-    .containeForms h2 {
-        font-size: 30px;
-    }
+.form button[type="submit"]:active {
+    transform: translateY(0px);
+    box-shadow: 
+        3px 3px 8px rgba(0, 0, 0, 0.8),
+        -3px -3px 8px rgba(0, 255, 238, 0.05);
 }
 
-/* Adiciona uma nova media query para telas extra pequenas */
-@media (max-width: 384px) {
-    .containeForms h2 {
-        font-size: 1.5rem; /* Ajusta o tamanho da fonte do h2 para telas menores */
-    }
-
-    .form button {
-        width: 100%; /* Faz com que o botão ocupe toda a largura disponível */
-        padding: 10px; /* Aumenta o padding para melhorar a usabilidade em telas touch */
-    }
+.form button[type="submit"]:disabled {
+    background: #666;
+    cursor: not-allowed;
+    transform: none;
 }
 
-/* Loading Indicator */
-.loading-container {
-    text-align: center;
-    padding: 2rem;
-    background: var(--second-bg-color);
-    border-radius: 10px;
-    margin-bottom: 2rem;
-    border: 2px solid var(--main-color);
+/* Loading em Tela Cheia - Simples */
+.fullscreen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(8, 8, 8, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
 }
 
-.loading-spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid var(--second-bg-color);
+.fullscreen-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Spinner Simples */
+.simple-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(0, 255, 238, 0.2);
     border-top: 4px solid var(--main-color);
     border-radius: 50%;
     animation: spin 1s linear infinite;
-    margin: 0 auto 1rem;
+    margin-bottom: 20px;
 }
 
 @keyframes spin {
@@ -136,47 +154,75 @@
     100% { transform: rotate(360deg); }
 }
 
-.loading-container p {
+.overlay-text {
     color: var(--main-color);
-    font-size: 1.4rem;
-    margin: 0;
-}
-
-/* Feedback Messages */
-.feedback-message {
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin-bottom: 2rem;
-    text-align: center;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 600;
-    animation: fadeIn 0.5s ease-in;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.feedback-message.success {
-    background: linear-gradient(135deg, rgba(0, 255, 238, 0.1), rgba(0, 255, 238, 0.05));
-    border: 2px solid var(--main-color);
+.overlay-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: bounce 0.6s ease;
+}
+
+.overlay-icon.success {
     color: var(--main-color);
 }
 
-.feedback-message.error {
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.05));
-    border: 2px solid #ff4444;
+.overlay-icon.error {
     color: #ff4444;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+.close-btn {
+    background: linear-gradient(145deg, var(--main-color), #00d4c4);
+    color: var(--second-bg-color);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
 }
 
-/* Button States */
-.form button[type="submit"]:disabled {
-    background-color: #666;
-    cursor: not-allowed;
-    transform: none;
+.close-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 238, 0.3);
 }
 
-.form button[type="submit"]:disabled:hover {
-    transform: none;
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .form {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .form label {
+        font-size: 1.5rem;
+    }
+    
+    .overlay-text {
+        font-size: 1.3rem;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 384px) {
+    .form {
+        padding: 15px;
+    }
+    
+    .form label {
+        font-size: 1.3rem;
+    }
 }

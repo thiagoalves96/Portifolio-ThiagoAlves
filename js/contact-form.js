@@ -2,9 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contact-form');
     const submitBtn = document.getElementById('submit-btn');
 
-    // Criar elementos de loading e resultado em tela cheia
-    createFullscreenElements();
-
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
         
@@ -17,12 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Validate form
         if (!formData.name || !formData.email || !formData.message) {
-            showFullscreenResult('Todos os campos são obrigatórios.', 'error', '❌');
+            showOverlay('❌', 'Todos os campos são obrigatórios.', 'error');
             return;
         }
         
-        // Show fullscreen loading
-        showFullscreenLoading(true);
+        // Show loading
+        showLoading();
         
         try {
             const response = await fetch('/api/contact', {
@@ -35,75 +32,54 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const result = await response.json();
             
-            // Hide loading
-            showFullscreenLoading(false);
-            
             if (result.success) {
-                showFullscreenResult(result.message, 'success', '✅');
-                form.reset(); // Clear form on success
+                showOverlay('✅', result.message, 'success');
+                form.reset();
             } else {
-                showFullscreenResult(result.message, 'error', '❌');
+                showOverlay('❌', result.message, 'error');
             }
             
         } catch (error) {
             console.error('Erro:', error);
-            showFullscreenLoading(false);
-            showFullscreenResult('Erro de conexão. Verifique sua internet e tente novamente.', 'error', '🌐');
+            showOverlay('🌐', 'Erro de conexão. Tente novamente.', 'error');
         }
     });
     
-    function createFullscreenElements() {
-        // Loading em tela cheia
-        const loadingHTML = `
-            <div id="fullscreen-loading" class="fullscreen-loading">
-                <div class="loading-3d">
-                    <div class="loading-ring"></div>
-                    <div class="loading-ring"></div>
-                    <div class="loading-ring"></div>
-                </div>
-                <div class="loading-text">Enviando mensagem...</div>
-            </div>
+    function showLoading() {
+        const overlay = createOverlay();
+        overlay.innerHTML = `
+            <div class="simple-spinner"></div>
+            <div class="overlay-text">Enviando mensagem...</div>
         `;
-        
-        // Resultado em tela cheia
-        const resultHTML = `
-            <div id="fullscreen-result" class="fullscreen-result">
-                <div class="result-icon" id="result-icon">✅</div>
-                <div class="result-message" id="result-message">Mensagem enviada com sucesso!</div>
-                <button class="close-result" onclick="hideFullscreenResult()">Fechar</button>
-            </div>
-        `;
-        
-        document.body.insertAdjacentHTML('beforeend', loadingHTML + resultHTML);
+        overlay.classList.add('active');
     }
     
-    function showFullscreenLoading(show) {
-        const loading = document.getElementById('fullscreen-loading');
-        if (show) {
-            loading.classList.add('active');
-            submitBtn.disabled = true;
-        } else {
-            loading.classList.remove('active');
-            submitBtn.disabled = false;
+    function showOverlay(icon, message, type) {
+        const overlay = createOverlay();
+        overlay.innerHTML = `
+            <div class="overlay-icon ${type}">${icon}</div>
+            <div class="overlay-text">${message}</div>
+            <button class="close-btn" onclick="hideOverlay()">Fechar</button>
+        `;
+        overlay.classList.add('active');
+    }
+    
+    function createOverlay() {
+        let overlay = document.getElementById('fullscreen-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.id = 'fullscreen-overlay';
+            overlay.className = 'fullscreen-overlay';
+            document.body.appendChild(overlay);
         }
+        return overlay;
     }
     
-    function showFullscreenResult(message, type, icon) {
-        const result = document.getElementById('fullscreen-result');
-        const resultIcon = document.getElementById('result-icon');
-        const resultMessage = document.getElementById('result-message');
-        
-        resultIcon.textContent = icon;
-        resultIcon.className = `result-icon ${type}`;
-        resultMessage.textContent = message;
-        resultMessage.className = `result-message ${type}`;
-        
-        result.classList.add('active');
-    }
-    
-    // Função global para fechar resultado
-    window.hideFullscreenResult = function() {
-        const result = document.getElementById('fullscreen-result');
-        result.classList.remove('active');
+    // Função global para fechar
+    window.hideOverlay = function() {
+        const overlay = document.getElementById('fullscreen-overlay');
+        if (overlay) {
+            overlay.classList.remove('active');
+        }
     };
 });
