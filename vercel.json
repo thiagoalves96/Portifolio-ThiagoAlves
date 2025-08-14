@@ -1,13 +1,13 @@
 {
   "functions": {
-    "api/contact.php": {
-      "runtime": "vercel-php@0.6.0"
+    "api/contact.js": {
+      "runtime": "nodejs18.x"
     }
   },
   "routes": [
     {
       "src": "/api/contact",
-      "dest": "/api/contact.php"
+      "dest": "/api/contact.js"
     }
   ]
 }
