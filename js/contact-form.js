@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contact-form');
-    const loadingIndicator = document.getElementById('loading-indicator');
-    const feedbackMessage = document.getElementById('feedback-message');
     const submitBtn = document.getElementById('submit-btn');
+
+    // Criar elementos de loading e resultado em tela cheia
+    createFullscreenElements();
 
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -16,13 +17,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Validate form
         if (!formData.name || !formData.email || !formData.message) {
-            showFeedback('Todos os campos são obrigatórios.', 'error');
+            showFullscreenResult('Todos os campos são obrigatórios.', 'error', '❌');
             return;
         }
         
-        // Show loading
-        showLoading(true);
-        hideFeedback();
+        // Show fullscreen loading
+        showFullscreenLoading(true);
         
         try {
             const response = await fetch('/api/contact', {
@@ -35,47 +35,75 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const result = await response.json();
             
+            // Hide loading
+            showFullscreenLoading(false);
+            
             if (result.success) {
-                showFeedback(result.message, 'success');
+                showFullscreenResult(result.message, 'success', '✅');
                 form.reset(); // Clear form on success
             } else {
-                showFeedback(result.message, 'error');
+                showFullscreenResult(result.message, 'error', '❌');
             }
             
         } catch (error) {
             console.error('Erro:', error);
-            showFeedback('Erro de conexão. Verifique sua internet e tente novamente.', 'error');
-        } finally {
-            showLoading(false);
+            showFullscreenLoading(false);
+            showFullscreenResult('Erro de conexão. Verifique sua internet e tente novamente.', 'error', '🌐');
         }
     });
     
-    function showLoading(show) {
-        if (show) {
-            loadingIndicator.style.display = 'block';
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Enviando...';
-        } else {
-            loadingIndicator.style.display = 'none';
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Enviar';
-        }
-    }
-    
-    function showFeedback(message, type) {
-        feedbackMessage.textContent = message;
-        feedbackMessage.className = `feedback-message ${type}`;
-        feedbackMessage.style.display = 'block';
+    function createFullscreenElements() {
+        // Loading em tela cheia
+        const loadingHTML = `
+            <div id="fullscreen-loading" class="fullscreen-loading">
+                <div class="loading-3d">
+                    <div class="loading-ring"></div>
+                    <div class="loading-ring"></div>
+                    <div class="loading-ring"></div>
+                </div>
+                <div class="loading-text">Enviando mensagem...</div>
+            </div>
+        `;
         
-        // Auto-hide success messages after 5 seconds
-        if (type === 'success') {
-            setTimeout(() => {
-                hideFeedback();
-            }, 5000);
+        // Resultado em tela cheia
+        const resultHTML = `
+            <div id="fullscreen-result" class="fullscreen-result">
+                <div class="result-icon" id="result-icon">✅</div>
+                <div class="result-message" id="result-message">Mensagem enviada com sucesso!</div>
+                <button class="close-result" onclick="hideFullscreenResult()">Fechar</button>
+            </div>
+        `;
+        
+        document.body.insertAdjacentHTML('beforeend', loadingHTML + resultHTML);
+    }
+    
+    function showFullscreenLoading(show) {
+        const loading = document.getElementById('fullscreen-loading');
+        if (show) {
+            loading.classList.add('active');
+            submitBtn.disabled = true;
+        } else {
+            loading.classList.remove('active');
+            submitBtn.disabled = false;
         }
     }
     
-    function hideFeedback() {
-        feedbackMessage.style.display = 'none';
+    function showFullscreenResult(message, type, icon) {
+        const result = document.getElementById('fullscreen-result');
+        const resultIcon = document.getElementById('result-icon');
+        const resultMessage = document.getElementById('result-message');
+        
+        resultIcon.textContent = icon;
+        resultIcon.className = `result-icon ${type}`;
+        resultMessage.textContent = message;
+        resultMessage.className = `result-message ${type}`;
+        
+        result.classList.add('active');
     }
+    
+    // Função global para fechar resultado
+    window.hideFullscreenResult = function() {
+        const result = document.getElementById('fullscreen-result');
+        result.classList.remove('active');
+    };
 });
