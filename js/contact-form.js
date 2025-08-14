@@ -47,30 +47,67 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function showLoading() {
         const overlay = createOverlay();
+        
+        let loadingText = 'Enviando mensagem...';
+        
+        if (window.translator && 
+            typeof window.translator.translate === 'function' && 
+            window.translator.currentLang) {
+            try {
+                const translation = window.translator.translate('form.sending');
+                if (translation && translation !== 'form.sending') {
+                    loadingText = translation;
+                }
+            } catch (error) {
+                console.warn('Erro na tradução, usando texto padrão:', error);
+            }
+        }
+        
         overlay.innerHTML = `
             <div class="simple-spinner"></div>
-            <div class="overlay-text">Enviando mensagem...</div>
+            <div class="overlay-text">${loadingText}</div>
         `;
         overlay.classList.add('active');
     }
     
     function showLoadingOverlay() {
         const overlay = createOverlay();
-        const translator = window.translator;
+        const getTranslation = (key, fallback) => {
+            return window.translator && window.translator.translate ? 
+                   window.translator.translate(key) : fallback;
+        };
+        
         overlay.innerHTML = `
             <div class="simple-spinner"></div>
-            <div class="overlay-text">${translator ? translator.translate('form.sending') : 'Enviando mensagem...'}</div>
+            <div class="overlay-text">${getTranslation('form.sending', 'Enviando mensagem...')}</div>
         `;
         overlay.classList.add('active');
     }
     
     function showOverlay(icon, message, type) {
         const overlay = createOverlay();
-        const translator = window.translator;
+        
+        // Texto do botão sempre em português como fallback
+        let closeButtonText = 'Fechar';
+        
+        // Tenta obter a tradução apenas se o translator estiver completamente carregado
+        if (window.translator && 
+            typeof window.translator.translate === 'function' && 
+            window.translator.currentLang) {
+            try {
+                const translation = window.translator.translate('form.close');
+                if (translation && translation !== 'form.close') {
+                    closeButtonText = translation;
+                }
+            } catch (error) {
+                console.warn('Erro na tradução, usando texto padrão:', error);
+            }
+        }
+        
         overlay.innerHTML = `
             <div class="overlay-icon ${type}">${icon}</div>
             <div class="overlay-text">${message}</div>
-            <button class="close-btn" onclick="hideOverlay()">${translator ? translator.translate('form.close') : 'Fechar'}</button>
+            <button class="close-btn" onclick="hideOverlay()">${closeButtonText}</button>
         `;
         overlay.classList.add('active');
     }
