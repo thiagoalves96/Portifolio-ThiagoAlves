@@ -30,52 +30,37 @@ module.exports = async (req, res) => {
   }
 
   try {
-    // Configure nodemailer
-    const transporter = nodemailer.createTransporter({
-      service: 'hotmail',
+    // Configure nodemailer with Gmail
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false, // true for 465, false for other ports
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
+        user: process.env.EMAIL_USER, // thiagoft96@gmail.com
+        pass: process.env.EMAIL_PASS  // senha de app do Gmail
+      },
+      tls: {
+        rejectUnauthorized: false
       }
     });
 
+    // Email options
     const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: 'thiagodev22@hotmail.com',
-      subject: `Nova mensagem do portfólio - ${name}`,
+      from: process.env.EMAIL_USER,           // thiagoft96@gmail.com (remetente)
+      to: 'thiagodev22@hotmail.com',          // seu Hotmail (destinatário)
+      subject: `Novo contato do site: ${name}`,
       html: `
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset='UTF-8'>
-            <style>
-                body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-                .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-                .header { background: linear-gradient(135deg, #00ffee, #0099cc); color: white; padding: 20px; text-align: center; }
-                .content { background: #f9f9f9; padding: 20px; border-left: 4px solid #00ffee; }
-                .footer { background: #333; color: white; padding: 10px; text-align: center; font-size: 12px; }
-            </style>
-        </head>
-        <body>
-            <div class='container'>
-                <div class='header'>
-                    <h2>Nova Mensagem do Portfólio</h2>
-                </div>
-                <div class='content'>
-                    <p><strong>Nome:</strong> ${name}</p>
-                    <p><strong>E-mail:</strong> ${email}</p>
-                    <p><strong>Mensagem:</strong></p>
-                    <p>${message}</p>
-                </div>
-                <div class='footer'>
-                    <p>Mensagem enviada através do portfólio thiagoalvesdev.com.br</p>
-                </div>
-            </div>
-        </body>
-        </html>
-      `,
-      replyTo: email
+        <h2>Novo contato recebido!</h2>
+        <p><strong>Nome:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Mensagem:</strong></p>
+        <p>${message}</p>
+      `
     };
+
+    // Teste a conexão antes de enviar
+    await transporter.verify();
+    console.log('Conexão SMTP OK!');
 
     await transporter.sendMail(mailOptions);
 
