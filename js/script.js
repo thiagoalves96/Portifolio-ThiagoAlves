@@ -25,3 +25,70 @@ menuIcon.onclick = () => {
     menuIcon.classList.toggle("bx-x");
     navbar.classList.toggle("active");
 };
+
+
+// Função para criar estrelas cadentes
+function createShootingStar() {
+    const shootingStarsContainer = document.querySelector('.shooting-stars');
+    const shootingStar = document.createElement('div');
+    shootingStar.className = 'shooting-star';
+    
+    // Posição inicial aleatória
+    const startX = Math.random() * window.innerWidth;
+    const startY = Math.random() * (window.innerHeight / 2);
+    
+    shootingStar.style.left = startX + 'px';
+    shootingStar.style.top = startY + 'px';
+    
+    shootingStarsContainer.appendChild(shootingStar);
+    
+    // Remove a estrela cadente após a animação
+    setTimeout(() => {
+        if (shootingStar.parentNode) {
+            shootingStar.parentNode.removeChild(shootingStar);
+        }
+    }, 3000);
+}
+
+// Criar estrelas cadentes em intervalos aleatórios
+function startShootingStars() {
+    setInterval(() => {
+        if (Math.random() < 0.3) { // 30% de chance a cada intervalo
+            createShootingStar();
+        }
+    }, 2000); // Verifica a cada 2 segundos
+}
+
+// Iniciar as estrelas cadentes quando a página carregar
+window.addEventListener('load', () => {
+    startShootingStars();
+});
+
+
+// Funcionalidade dos cards de projeto
+document.addEventListener('DOMContentLoaded', function() {
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+        card.addEventListener('click', function() {
+            // Remove active de todos os outros cards
+            projectCards.forEach(otherCard => {
+                if (otherCard !== card) {
+                    otherCard.classList.remove('active');
+                }
+            });
+            
+            // Toggle active no card clicado
+            card.classList.toggle('active');
+        });
+    });
+    
+    // Fechar card ao clicar fora
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.project-card')) {
+            projectCards.forEach(card => {
+                card.classList.remove('active');
+            });
+        }
+    });
+});

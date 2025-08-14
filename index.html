@@ -48,6 +48,16 @@
     <meta name="theme-color" content="#000000" />
   </head>
   <body>
+    <!-- Fundo de estrelas animado -->
+    <div class="stars-container">
+      <div class="stars"></div>
+      <div class="stars2"></div>
+      <div class="stars3"></div>
+    </div>
+    
+    <!-- Container para estrelas cadentes -->
+    <div class="shooting-stars"></div>
+    
     <header class="header">
       <a href="#home" class="logo">
         <img src="/img/logo-2.png" alt="Logo" />
@@ -74,7 +84,7 @@
           <span>Análise e Desenvolvimento de Sistemas</span> pela UniPaulistana, com habilidades em programação
           <span>Java (CRUD JSP e Servlet)</span>, <span>HTML</span>, <span>CSS</span> e <span>bancos de dados</span>.
           Certificações em <span>algoritmos</span>, <span>lógica de programação</span> e
-          <span>trabalho em equipes ágeis</span>. Proativo, com habilidades analíticas e raciocínio lógico, buscando
+          <span>trabalho em equipes ágeis</span>. Proativo, com habilidades analíticas e raciocírio lógico, buscando
           contribuir significativamente para metas da empresa em desenvolvimento de sistemas.
         </p>
         <div class="social-icons">
@@ -296,50 +306,58 @@
       <h2 class="heading">Projetos</h2>
       <h3 class="">Todos os <span>tópicos</span> levarão para o <span>GitHub</span></h3>
 
-      <div class="services-container">
-        <a href="https://github.com/thiagoalves96/Regra_de_Negocio" class="service-box" id="link">
-          <div class="service-info">
+      <div class="projects-grid">
+        <div class="project-card" data-project="1">
+          <div class="project-preview">
+            <div class="project-icon">☕</div>
+            <h4>CRUD Java Servlet</h4>
+            <p class="project-summary">Sistema de gerenciamento com Java Servlet e MySQL</p>
+          </div>
+          <div class="project-details">
             <h4>CRUD: Java Servlet</h4>
-            <p>
-              Este projeto é um sistema de gerenciamento de funcionários em Java com Servlet, conectando-se a um banco
-              de dados MySQL. Ele oferece operações básicas de CRUD (Create, Read, Update, Delete) e é licenciado sob a
-              MIT License.
-            </p>
+            <p>Este projeto é um sistema de gerenciamento de funcionários em Java com Servlet, conectando-se a um banco de dados MySQL. Ele oferece operações básicas de CRUD (Create, Read, Update, Delete) e é licenciado sob a MIT License.</p>
+            <a href="https://github.com/thiagoalves96/Regra_de_Negocio" class="project-link" target="_blank">Ver no GitHub</a>
           </div>
-        </a>
-        <a href="https://github.com/thiagoalves96/JavaSwing" id="link" class="service-box">
-          <div class="service-info">
+        </div>
+    
+        <div class="project-card" data-project="2">
+          <div class="project-preview">
+            <div class="project-icon">🖥️</div>
+            <h4>CRUD Java Swing</h4>
+            <p class="project-summary">Sistema de autenticação com interface gráfica</p>
+          </div>
+          <div class="project-details">
             <h4>CRUD em Java Swing</h4>
-            <p>
-              O projeto cria um sistema de autenticação avançado em Java Swing com banco de dados, oferecendo login,
-              verificação de credenciais, tela principal, registro de usuário e recuperação de senha. Utiliza Java para
-              a lógica, Swing para a interface e bancos de dados como MySQL ou PostgreSQL. Os benefícios incluem um
-              sistema robusto e seguro e a oportunidade de aprender tecnologias relevantes. Os objetivos são eficiência,
-              segurança e boa experiência do usuário, além de aprofundar conhecimentos em Java Swing e banco de dados.
-            </p>
+            <p>O projeto cria um sistema de autenticação avançado em Java Swing com banco de dados, oferecendo login, verificação de credenciais, tela principal, registro de usuário e recuperação de senha. Utiliza Java para a lógica, Swing para a interface e bancos de dados como MySQL ou PostgreSQL.</p>
+            <a href="https://github.com/thiagoalves96/JavaSwing" class="project-link" target="_blank">Ver no GitHub</a>
           </div>
-        </a>
-        <a href="https://github.com/thiagoalves96/Projetos" id="link" class="service-box">
-          <div class="service-info">
+        </div>
+    
+        <div class="project-card" data-project="3">
+          <div class="project-preview">
+            <div class="project-icon">🎲</div>
+            <h4>Jogo da Sorte</h4>
+            <p class="project-summary">Jogo de adivinhação desenvolvido em Java</p>
+          </div>
+          <div class="project-details">
             <h4>Lógica de Programação</h4>
-            <p>
-              Este projeto concluído é o Jogo da Sorte, desenvolvido em Java. Os jogadores tentam adivinhar um número
-              escolhido aleatoriamente pela máquina dentro de um intervalo definido, recebendo dicas para orientar suas
-              suposições. Utiliza Java (Versão 8) e Eclipse IDE. Os jogadores têm três tentativas para acertar o número
-              sorteado. Este projeto está licenciado sob a MIT License e aceita contribuições.
-            </p>
+            <p>Este projeto concluído é o Jogo da Sorte, desenvolvido em Java. Os jogadores tentam adivinhar um número escolhido aleatoriamente pela máquina dentro de um intervalo definido, recebendo dicas para orientar suas suposições. Os jogadores têm três tentativas para acertar o número sorteado.</p>
+            <a href="https://github.com/thiagoalves96/Projetos" class="project-link" target="_blank">Ver no GitHub</a>
           </div>
-        </a>
-        <a href="https://github.com/thiagoalves96/Java" id="link" class="service-box">
-          <div class="service-info">
-            <h4>Exercicios de lógicas em java</h4>
-            <p>
-              Este é um projeto em desenvolvimento de exercícios resolvidos na disciplina de Quality Assurance, com
-              orientação do Prof. Jailson Costa. Alguns exercícios já foram concluídos em sala de aula, como MANZAN e
-              FACCAT.
-            </p>
+        </div>
+    
+        <div class="project-card" data-project="4">
+          <div class="project-preview">
+            <div class="project-icon">🧪</div>
+            <h4>Exercícios QA</h4>
+            <p class="project-summary">Exercícios de lógica e Quality Assurance</p>
           </div>
-        </a>
+          <div class="project-details">
+            <h4>Exercícios de lógicas em Java</h4>
+            <p>Este é um projeto em desenvolvimento de exercícios resolvidos na disciplina de Quality Assurance, com orientação do Prof. Jailson Costa. Alguns exercícios já foram concluídos em sala de aula, como MANZAN e FACCAT.</p>
+            <a href="https://github.com/thiagoalves96/Java" class="project-link" target="_blank">Ver no GitHub</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -356,44 +374,114 @@
       </div>
       <div class="containeForms">
         <h2>Formulário</h2>
-        <form action="https://formsubmit.co/thiagodev22@hotmail.com" method="POST" class="form">
+        
+        <!-- Indicador de Loading -->
+        <div id="loading-indicator" class="loading-container" style="display: none;">
+          <div class="loading-spinner"></div>
+          <p>Enviando mensagem...</p>
+        </div>
+        
+        <!-- Mensagem de Feedback -->
+        <div id="feedback-message" class="feedback-message" style="display: none;"></div>
+        
+        <form id="contact-form" class="form">
           <label for="name">Nome</label>
           <input type="text" name="name" id="name" required placeholder="Digite o seu nome" />
           <label for="email"> E-mail</label>
           <input type="email" name="email" id="email" required placeholder="Digite o seu e-mail" />
           <label for="message">Mensagem</label>
           <textarea name="message" id="message" required placeholder="Digite a sua mensagem"></textarea>
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value="https://thiagoalvesdev.com.br/page/thanks.html" />
-          <button type="submit">Enviar</button>
+          <button type="submit" id="submit-btn">Enviar</button>
         </form>
       </div>
     </section>
-
-    <footer class="footer">
-      <div class="social">
-        <a href="https://www.linkedin.com/in/thiagodev-alves/" target="_blank"><i class="bx bxl-linkedin"></i></a>
-        <a href="https://github.com/thiagoalves96" target="_blank"> <i class="bx bxl-github"></i></a>
-        <a href="https://wa.me/5511992459507" target="_blank"><i class="bx bxl-whatsapp"></i></a>
-        <a href="mailto:thiagodev22@hotmail.com"><i class="bx bx-envelope"></i></a>
+  
+    
+      <!-- Rodapé 3D com tema do portfólio -->
+      <footer class="footer-3d">
+        <!-- Efeito de profundidade -->
+        <div class="footer-depth-layer"></div>
+        
+        <!-- Conteúdo principal -->
+        <div class="footer-main-3d">
+          <div class="footer-content-3d">
+            <!-- Seção da marca com efeito 3D -->
+            <div class="footer-brand-3d">
+              <h2 class="brand-title-3d">THIAGO <span>ALVES</span></h2>
+              <p class="brand-subtitle-3d">Desenvolvedor Java Jr</p>
+              <p class="brand-description-3d">
+                Desenvolvedor apaixonado por tecnologia, especializado em Java e sempre em busca de novos desafios.
+              </p>
+              
+              <!-- Redes sociais com efeito 3D -->
+              <div class="social-links-3d">
+                <a href="https://www.linkedin.com/in/thiagodev-alves/" target="_blank" class="social-btn-3d" title="LinkedIn">
+                  <i class="bx bxl-linkedin"></i>
+                  <span class="social-glow"></span>
+                </a>
+                <a href="https://github.com/thiagoalves96" target="_blank" class="social-btn-3d" title="GitHub">
+                  <i class="bx bxl-github"></i>
+                  <span class="social-glow"></span>
+                </a>
+                <a href="https://wa.me/5511992459507" target="_blank" class="social-btn-3d" title="WhatsApp">
+                  <i class="bx bxl-whatsapp"></i>
+                  <span class="social-glow"></span>
+                </a>
+                <a href="mailto:thiagodev22@hotmail.com" class="social-btn-3d" title="Email">
+                  <i class="bx bx-envelope"></i>
+                  <span class="social-glow"></span>
+                </a>
+              </div>
+            </div>
+            
+            <!-- Links organizados com cards 3D -->
+            <div class="footer-links-3d">
+              <div class="footer-card-3d">
+                <h4>Navegação</h4>
+                <ul>
+                  <li><a href="#home">Início</a></li>
+                  <li><a href="#education">Educação</a></li>
+                  <li><a href="#services">Projetos</a></li>
+                  <li><a href="#contact">Contato</a></li>
+                </ul>
+              </div>
+              
+              <div class="footer-card-3d">
+                <h4>Tecnologias</h4>
+                <ul>
+                  <li><span class="tech-badge-3d">Java</span></li>
+                  <li><span class="tech-badge-3d">Spring Boot</span></li>
+                  <li><span class="tech-badge-3d">MySQL</span></li>
+                  <li><span class="tech-badge-3d">Git/GitHub</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Rodapé inferior com efeito 3D -->
+        <div class="footer-bottom-3d">
+          <div class="footer-bottom-content-3d">
+            <p>&copy; 2024 Thiago Alves. Todos os direitos reservados.</p>
+            <div class="footer-badges-3d">
+              <span class="badge-3d">Desenvolvido com ❤️</span>
+              <span class="badge-3d">Java Developer</span>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <ul class="list">
-        <li>
-          <a href="#">FAQ</a>
-        </li>
-        <li>
-          <a href="#home">Sobre</a>
-        </li>
-        <li>
-          <a href="#services">Projetos</a>
-        </li>
-        <li>
-          <a href="#contact">Contato</a>
-        </li>
-      </ul>
-      <p class="copyrith">@Thiago Alves</p>
+      
+      <!-- Partículas flutuantes -->
+      <div class="footer-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
     </footer>
+    
     <script src="./js/script.js"></script>
-  </body>
-</html>
+    <script src="/js/contact-form.js"></script>
+    </body>
+    </html>
