@@ -281,6 +281,23 @@ class SimpleTranslator {
         this.translate();
         this.updateToggleState();
         this.updateAnimationCSS();
+        
+        // Atualizar o link do currículo
+        this.updateCurriculumLink();
+    }
+
+    // Adicionar esta nova função na classe SimpleTranslator
+    updateCurriculumLink() {
+        const cvButton = document.querySelector('a[data-translate="home.cv"]');
+        if (cvButton) {
+            if (this.currentLang === 'en') {
+                cvButton.href = 'Downloads/Thiago-Alves_EN.pdf';
+                cvButton.download = 'Thiago-Alves-CV-EN.pdf';
+            } else {
+                cvButton.href = 'Downloads/Thiagoti.pdf';
+                cvButton.download = 'CurriculoThiago.pdf';
+            }
+        }
     }
 
     translate() {
