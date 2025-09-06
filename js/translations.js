@@ -9,15 +9,15 @@ class SimpleTranslator {
         this.animationTexts = {
             pt: [
                 " Analista de Sistema",
-                " Programador Java Jr",
-                " Programador Junior",
-                " Desenvolvedor Junior"
+                " Programador Java Pleno",
+                " Programador Pleno",
+                " Desenvolvedor Pleno"
             ],
             en: [
                 " System Analyst",
-                " Java Jr Programmer",
-                " Junior Programmer",
-                " Junior Developer"
+                " Java Pl Programmer",
+                " Pleno Programmer",
+                " Pleno Developer"
             ]
         };
         
