@@ -40,7 +40,7 @@ class SimpleTranslator {
                 'education.title': 'Escolaridade',
 'projects.title': 'Projetos',
 'projects.subtitle': 'Todos os <span>tópicos</span> levarão para o <span>GitHub</span>',
-'contact.title': 'Contatar',
+'contact.title': 'Contatar<span>-me</span>',
                 
                 // Educação
                 'education.highschool.title': 'Ensino Médio Completo',
@@ -48,8 +48,16 @@ class SimpleTranslator {
                 'education.nursing.title': 'Curso Técnico de Enfermagem',
                 'education.nursing.description': 'Curso técnico de enfermagem <br />Duração 2 anos, INTESP - SP',
                 'education.courses.title': 'Cursos Extracurriculares',
+                'education.courses.algorithms': '<strong>Algoritmos e Lógica de Programação - Udemy</strong><br /><strong>Duração:</strong> 30 horas <br /><strong>O que absorvi:</strong> Entendimento de como formular algoritmos para resolver problemas e capacidade de implementar esses algoritmos usando lógica de programação. Aprendi a criar fluxogramas e pseudocódigo para planejar soluções antes de codificá-las.',
+                'education.courses.java.methods': '<strong>Compreendendo Métodos em Java - Digital Innovation One</strong><br /><strong>Duração:</strong> 2 horas <br /><strong>O que absorvi:</strong> Aprendi a definir e usar métodos em Java, entendendo a importância dos métodos para modularidade e reutilização de código. Compreendi como passar parâmetros e retornar valores dos métodos.',
+                'education.courses.java.logic': '<strong>Lógica Condicional e Controle de Fluxo em Java - Digital Innovation One</strong><br /><strong>Duração:</strong> 5 horas <br /><strong>O que absorvi:</strong> Dominei o uso de estruturas de controle de fluxo em Java, como if, else, switch e laços. Isso me permitiu controlar o comportamento do meu código com base em diferentes condições e repetição de tarefas.',
+                'education.courses.git': '<strong>Versionamento de Código com Git e GitHub - Digital Innovation One</strong><br /><strong>Duração:</strong> 2 horas <br /><strong>O que absorvi:</strong> Aprendi a usar Git para versionamento de código, incluindo comandos básicos como commit, push, pull e branch. Entendi como colaborar com outros desenvolvedores usando GitHub, gerenciando repositórios e resolvendo conflitos de código.',
+                'education.courses.java.oop': '<strong>Programação Orientada a Objetos com Java - Digital Innovation One</strong><br /><strong>Duração:</strong> 4 horas <br /><strong>O que absorvi:</strong> Compreendi os conceitos fundamentais de orientação a objetos, como classes, objetos, herança, polimorfismo e encapsulamento. Aprendi a aplicar esses conceitos para criar código mais organizado e reutilizável.',
+                'education.courses.java.syntax': '<strong>Aprendendo a Sintaxe do Java - Digital Innovation One</strong><br /><strong>Duração:</strong> 5 horas <br /><strong>O que absorvi:</strong> Desenvolvi entendimento sólido da sintaxe básica do Java, incluindo declaração de variáveis, uso de operadores e construção de estruturas de controle. Isso me preparou para escrever e entender programas em Java de forma eficaz.',
                 'education.graduation.institution': 'Instituição: Unipaulistana',
-                'education.graduation.description': '<strong>Graduação:</strong> Análise e Desenvolvimento de Sistemas<br /><strong>Duração:</strong> concluido<br /><strong>O que absorvi:</strong> Durante minha jornada na Unipaulistana, absorvi conhecimentos essenciais em análise e desenvolvimento de sistemas utilizando principalmente a linguagem Java.',
+                'education.graduation.description': '<strong>Graduação:</strong> Análise e Desenvolvimento de Sistemas<br /><strong>Duração:</strong> concluído<br /><strong>O que absorvi:</strong> Durante minha jornada na Unipaulistana, absorvi conhecimentos essenciais em análise e desenvolvimento de sistemas utilizando principalmente a linguagem Java.',
+                'education.postgrad.institution': 'Instituição: Universidade Tecnológica Federal do Paraná - UTFPR',
+                'education.postgrad.description': '<strong>Pós-graduação:</strong> Pós-graduação Lato Sensu em Tecnologia Java<br /><strong>Duração:</strong> em andamento<br /><em>Pós-graduação Lato Sensu em Tecnologia Java</em> proporciona aprofundamento em tecnologias avançadas do ecossistema Java, focando especialmente no desenvolvimento de aplicações robustas e escaláveis. Durante o curso, estou aprendendo conceitos avançados de Java EE, frameworks como Spring Boot e Hibernate, bem como práticas modernas de desenvolvimento ágil e integração de sistemas. O programa também inclui estudos em arquiteturas de microserviços, segurança da informação em aplicações Java e estratégias de otimização de performance. O objetivo é habilitar profissionais para liderar projetos complexos e inovadores no mercado de desenvolvimento de software.',
                 
                 // Projetos
                 'projects.crud.servlet.title': 'CRUD Java Servlet',
