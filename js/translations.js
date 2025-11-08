@@ -1,9 +1,9 @@
 // Sistema de tradução completo
 class SimpleTranslator {
     constructor() {
-        this.currentLang = 'pt';
+        this.currentLang = localStorage.getItem('language') || 'pt';
         this.textInterval = null;
-        this.typewriterTimeout = null; // ADICIONAR ESTA LINHA
+        this.typewriterTimeout = null;
         
         // Textos da animação
         this.animationTexts = {
@@ -94,6 +94,10 @@ class SimpleTranslator {
                 'footer.description': 'Desenvolvedor apaixonado por tecnologia, especializado em Java e sempre em busca de novos desafios.',
                 'footer.navigation': 'Navegação',
                 'footer.technologies': 'Tecnologias',
+                'footer.nav.home': 'Início',
+                'footer.nav.education': 'Educação',
+                'footer.nav.projects': 'Projetos',
+                'footer.nav.contact': 'Contato',
                 'footer.copyright': '© 2024 Thiago Alves. Todos os direitos reservados.',
                 'footer.badge.love': 'Desenvolvido com ❤️',
                 'footer.badge.developer': 'Java Developer'
@@ -187,6 +191,10 @@ class SimpleTranslator {
                 'footer.description': 'Technology-passionate developer, specialized in Java and always looking for new challenges.',
                 'footer.navigation': 'Navigation',
                 'footer.technologies': 'Technologies',
+                'footer.nav.home': 'Home',
+                'footer.nav.education': 'Education',
+                'footer.nav.projects': 'Projects',
+                'footer.nav.contact': 'Contact',
                 'footer.copyright': '© 2024 Thiago Alves. All rights reserved.',
                 'footer.badge.love': 'Developed with ❤️',
                 'footer.badge.developer': 'Java Developer'
@@ -250,29 +258,31 @@ class SimpleTranslator {
         console.log('Animação typewriter iniciada com textos:', texts);
     }
 
-    // REMOVER ESTA FUNÇÃO COMPLETA:
-    // createToggle() {
-    //     const toggle = document.createElement('div');
-    //     toggle.className = 'language-toggle';
-    //     toggle.innerHTML = `
-    //         <button class="lang-btn ${this.currentLang === 'pt' ? 'active' : ''}" data-lang="pt">PT</button>
-    //         <button class="lang-btn ${this.currentLang === 'en' ? 'active' : ''}" data-lang="en">EN</button>
-    //     `;
-    //     
-    //     document.body.appendChild(toggle);
-    //     
-    //     toggle.addEventListener('click', (e) => {
-    //         if (e.target.classList.contains('lang-btn')) {
-    //             this.switchLang(e.target.dataset.lang);
-    //         }
-    //     });
-    // }
 
     updateToggleState() {
-        const buttons = document.querySelectorAll('.lang-btn');
-        buttons.forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.lang === this.currentLang);
+        const checkbox = document.getElementById('lang-toggle');
+        if (checkbox) {
+            checkbox.checked = this.currentLang === 'en';
+        }
+        const button = document.getElementById('language-button');
+        const label = document.getElementById('current-language-label');
+        const flagEl = document.getElementById('current-language-flag');
+        const options = document.querySelectorAll('.language-option');
+        if (label) {
+            label.textContent = this.currentLang === 'pt' ? 'Português' : 'English';
+        }
+        if (flagEl) {
+            flagEl.textContent = this.currentLang === 'pt' ? '🇧🇷' : '🇺🇸';
+        }
+        options.forEach(opt => {
+            const lang = opt.getAttribute('data-lang');
+            opt.setAttribute('aria-selected', lang === this.currentLang ? 'true' : 'false');
         });
+        if (button) {
+            button.setAttribute('aria-expanded', 'false');
+            const selector = document.getElementById('language-selector');
+            if (selector) selector.classList.remove('open');
+        }
     }
 
     switchLang(lang) {
@@ -281,8 +291,8 @@ class SimpleTranslator {
         this.translate();
         this.updateToggleState();
         this.updateAnimationCSS();
+        document.documentElement.setAttribute('lang', lang === 'pt' ? 'pt-br' : 'en');
         
-        // Atualizar o link do currículo
         this.updateCurriculumLink();
     }
 
@@ -304,8 +314,12 @@ class SimpleTranslator {
         const elements = document.querySelectorAll('[data-translate]');
         elements.forEach(el => {
             const key = el.getAttribute('data-translate');
-            const translation = this.translations[this.currentLang][key];
-            
+            const current = this.translations[this.currentLang][key];
+            const partnerLang = this.currentLang === 'pt' ? 'en' : 'pt';
+            const fallbackPartner = this.translations[partnerLang] && this.translations[partnerLang][key];
+            const fallbackPt = this.translations['pt'] && this.translations['pt'][key];
+            const fallbackEn = this.translations['en'] && this.translations['en'][key];
+            const translation = current || fallbackPartner || fallbackPt || fallbackEn;
             if (translation) {
                 if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                     el.placeholder = translation;
@@ -314,21 +328,63 @@ class SimpleTranslator {
                 }
             }
         });
+        const navEls = document.querySelectorAll('header nav a[data-translate]');
+        navEls.forEach(el => {
+            const key = el.getAttribute('data-translate');
+            const val = this.translations[this.currentLang][key];
+            if (val) el.textContent = val;
+        });
     }
 
     init() {
         this.updateAnimationCSS();
-        // REMOVER ESTA LINHA:
-        // this.createToggle();
         this.translate();
+        document.documentElement.setAttribute('lang', this.currentLang === 'pt' ? 'pt-br' : 'en');
+        this.updateCurriculumLink();
+        const checkbox = document.getElementById('lang-toggle');
+        if (checkbox) {
+            checkbox.checked = this.currentLang === 'en';
+            checkbox.addEventListener('change', () => {
+                const lang = checkbox.checked ? 'en' : 'pt';
+                this.switchLang(lang);
+            });
+        }
+
+        const button = document.getElementById('language-button');
+        const menu = document.getElementById('language-menu');
+        const selector = document.getElementById('language-selector');
+        if (button && menu && selector) {
+            button.addEventListener('click', () => {
+                const isOpen = selector.classList.toggle('open');
+                button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+            menu.addEventListener('click', (e) => {
+                const item = e.target.closest('.language-option');
+                if (!item) return;
+                const lang = item.getAttribute('data-lang');
+                if (lang) {
+                    this.switchLang(lang);
+                }
+            });
+            document.addEventListener('click', (e) => {
+                if (!selector.contains(e.target)) {
+                    selector.classList.remove('open');
+                    button.setAttribute('aria-expanded', 'false');
+                }
+            });
+            this.updateToggleState();
+        }
     }
 }
 
-// Inicializar quando DOM estiver pronto
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
+if (typeof module === 'undefined' || !module.exports) {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.translator = new SimpleTranslator();
+        });
+    } else {
         window.translator = new SimpleTranslator();
-    });
-} else {
-    window.translator = new SimpleTranslator();
+    }
+} else if (typeof module !== 'undefined' && module.exports) {
+    module.exports = SimpleTranslator;
 }

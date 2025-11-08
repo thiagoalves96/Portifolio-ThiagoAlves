@@ -13,6 +13,7 @@
   --second-bg-color: #131313;
   --text-color: white;
   --main-color: #00ffee;
+  --header-height: 80px;
 }
 html {
   font-size: 60%;
@@ -21,6 +22,7 @@ html {
 body {
   background: var(--bg-color);
   color: var(--text-color);
+  padding-top: var(--header-height);
 }
 #espaco {
   margin-left: 60px;
@@ -39,6 +41,7 @@ body {
   z-index: 1000;
   border-bottom: 2px solid var(--main-color);
   box-shadow: 0 2px 10px rgba(0, 255, 238, 0.2);
+  min-height: var(--header-height);
 }
 
 .logo img {
@@ -74,6 +77,147 @@ body {
   display: none;
   cursor: pointer;
   margin-left: auto;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.language-toggle-header { display: none; }
+
+.language-selector {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.language-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1.5px solid var(--main-color);
+  border-radius: 999px;
+  background: rgba(0, 255, 238, 0.08);
+  color: var(--text-color);
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, transform .06s ease;
+}
+
+.language-button:hover { background: rgba(0, 255, 238, 0.12); }
+.language-button:active { transform: scale(0.98); }
+
+.language-button .bx { font-size: 1.1rem; color: var(--main-color); }
+
+.language-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 160px;
+  padding: 6px;
+  background: var(--bg-color);
+  border: 1px solid rgba(0, 255, 238, 0.25);
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  display: none;
+  z-index: 1000;
+}
+
+.language-selector.open .language-menu { display: block; }
+
+.language-option {
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.language-option:hover { background: rgba(0, 255, 238, 0.08); }
+.language-option[aria-selected="true"] { background: rgba(0, 255, 238, 0.14); color: var(--main-color); }
+
+@media (max-width: 480px) {
+  .language-button { padding: 6px 10px; font-size: 0.9rem; }
+  .language-menu { min-width: 140px; }
+}
+
+.slider .flag {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  line-height: 1;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+.slider .flag.pt { left: 12px; }
+.slider .flag.en { right: 12px; }
+
+input:not(:checked) + .slider .flag.pt { opacity: 1; }
+input:not(:checked) + .slider .flag.en { opacity: .6; }
+input:checked + .slider .flag.pt { opacity: .6; }
+input:checked + .slider .flag.en { opacity: 1; }
+
+@media (max-width: 768px) {
+  .slider .flag { font-size: 1.2rem; }
+}
+
+@media (max-width: 480px) {
+  .slider .flag { font-size: 1.1rem; }
+}
+
+.switch { display: none; }
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 255, 238, 0.08);
+  border: 2px solid var(--main-color);
+  transition: .3s;
+  border-radius: 30px;
+  box-shadow: inset 0 0 12px rgba(0, 255, 238, 0.25);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 32px;
+  width: 32px;
+  left: 4px;
+  top: 2px;
+  background: var(--main-color);
+  transition: .3s;
+  border-radius: 50%;
+  box-shadow: 0 6px 14px rgba(0, 255, 238, 0.35);
+}
+
+input:checked + .slider {
+  background: rgba(0, 255, 238, 0.1);
+}
+
+input:checked + .slider:before {
+  transform: translateX(52px);
+  background: var(--bg-color);
+}
+
+.slider.round {
+  border-radius: 30px;
 }
 
 section {
@@ -231,6 +375,8 @@ span {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .btn-group a:nth-last-of-type(1) {
   background-color: black;
@@ -1225,7 +1371,7 @@ span {
   }
   
   .navbar.active ~ .language-toggle-header {
-    display: none;
+    display: flex;
   }
   
   .language-toggle-header .lang-btn {
@@ -1758,11 +1904,12 @@ span {
 /* Responsividade ajustada - botões se movem para baixo a partir de 1100px */
 @media (max-width: 1175px) {
   .language-toggle-header {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
+    position: static;
+    top: auto;
+    right: auto;
+    transform: none;
     z-index: 998;
+    margin-left: 1rem;
   }
   
   .language-toggle-header .lang-btn {
@@ -1775,7 +1922,7 @@ span {
 @media (max-width: 1100px) {
   .language-toggle-header {
     position: fixed;
-    top: 80px; /* Abaixo do header */
+    top: calc(var(--header-height) + 10px);
     right: 10px;
     z-index: 998;
   }
@@ -1796,7 +1943,7 @@ span {
   /* Mantém os botões abaixo do header */
   .language-toggle-header {
     position: fixed;
-    top: 80px;
+    top: calc(var(--header-height) + 10px);
     right: 10px;
     z-index: 998;
   }
@@ -1807,11 +1954,10 @@ span {
     gap: 2px;
   }
   
-  /* Esconde quando menu está ativo */
   .navbar.active ~ .language-toggle-header {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 }
 
@@ -1925,9 +2071,45 @@ span {
   }
 }
 
-/* Estilo adicional quando menu está ativo */
-.header.menu-active .language-toggle-header {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
+ 
+@media (max-width: 768px) {
+  .btn-group .btn {
+    padding: 0.8rem 2rem;
+    font-size: 1.4rem;
+  }
 }
+
+@media (max-width: 498px) {
+  .btn-group .btn {
+    padding: 0.7rem 1.8rem;
+    font-size: 1.3rem;
+    border-radius: 4rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .btn-group .btn {
+    padding: 0.6rem 1.6rem;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 895px) {
+  :root { --header-height: 70px; }
+}
+
+.language-toggle-header {
+  position: static;
+  top: auto;
+  right: auto;
+  transform: none;
+  z-index: auto;
+}
+
+.navbar.active ~ .language-toggle-header {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.language-button .flag-icon { font-size: 1.05rem; }
+.language-option .flag-icon { font-size: 1.1rem; margin-right: 8px; }

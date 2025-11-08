@@ -63,23 +63,25 @@
         <img src="img/logo-2.png" alt="Logo" />
       </a>
 
-      <i class="bx bx-menu" id="menu-icon"></i>
-
       <nav class="navbar">
         <a href="#home" class="active" data-translate="nav.profile">Perfil</a>
         <a href="#education" data-translate="nav.education">Escolaridade</a>
         <a href="#services" data-translate="nav.projects">Projetos</a>
         <a href="#contact" data-translate="nav.contact">Contato</a>
       </nav>
-      
-      <!-- Botão de tradução integrado ao header -->
-      <div class="language-toggle-header">
-        <button class="lang-btn active" onclick="translator.switchLang('pt')" title="Português">
-          🇧🇷 PT
-        </button>
-        <button class="lang-btn" onclick="translator.switchLang('en')" title="English">
-          🇺🇸 EN
-        </button>
+      <div class="header-actions">
+        <div class="language-selector" id="language-selector">
+          <button type="button" class="language-button" id="language-button" aria-haspopup="listbox" aria-expanded="false" aria-label="Selecionar idioma">
+            <span id="current-language-flag" class="flag-icon" aria-hidden="true">🇧🇷</span>
+            <span id="current-language-label">Português</span>
+            <i class='bx bx-chevron-down'></i>
+          </button>
+          <ul class="language-menu" id="language-menu" role="listbox">
+            <li class="language-option" role="option" data-lang="pt" aria-selected="false"><span class="flag-icon" aria-hidden="true">🇧🇷</span><span>Português</span></li>
+            <li class="language-option" role="option" data-lang="en" aria-selected="false"><span class="flag-icon" aria-hidden="true">🇺🇸</span><span>English</span></li>
+          </ul>
+        </div>
+        <i class="bx bx-menu" id="menu-icon"></i>
       </div>
     </header>
     

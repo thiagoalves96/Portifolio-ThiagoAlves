@@ -114,26 +114,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-
-
-// Função para atualizar o link do currículo baseado no idioma
-function updateCurriculumLink() {
-    const cvButton = document.querySelector('a[data-translate="home.cv"]');
-    if (cvButton && window.translator) {
-        if (window.translator.currentLang === 'en') {
-            cvButton.href = 'Downloads/Thiago-Alves_EN.pdf';
-            cvButton.download = 'Thiago-Alves-CV-EN.pdf';
-        } else {
-            cvButton.href = 'Downloads/Thiagoti.pdf';
-            cvButton.download = 'CurriculoThiago.pdf';
-        }
-    }
-}
-
-// Chama a função quando a página carrega
-document.addEventListener('DOMContentLoaded', function() {
-    // Aguarda o translator ser inicializado
-    setTimeout(() => {
-        updateCurriculumLink();
-    }, 100);
-});
