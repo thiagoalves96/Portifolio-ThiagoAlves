@@ -98,7 +98,7 @@ class SimpleTranslator {
                 'placeholder.message': 'Digite a sua mensagem',
                 
                 // Footer
-                'footer.subtitle': 'Desenvolvedor Java Jr',
+                'footer.subtitle': 'Desenvolvedor Java',
                 'footer.description': 'Desenvolvedor apaixonado por tecnologia, especializado em Java e sempre em busca de novos desafios.',
                 'footer.navigation': 'Navegação',
                 'footer.technologies': 'Tecnologias',
@@ -195,7 +195,7 @@ class SimpleTranslator {
                 'placeholder.message': 'Enter your message',
                 
                 // Footer
-                'footer.subtitle': 'Java Jr Developer',
+                'footer.subtitle': 'Java Developer',
                 'footer.description': 'Technology-passionate developer, specialized in Java and always looking for new challenges.',
                 'footer.navigation': 'Navigation',
                 'footer.technologies': 'Technologies',
